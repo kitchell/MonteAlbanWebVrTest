@@ -3,16 +3,21 @@
   <head>
     <meta charset="utf-8">
     <title>Monte Alban Carving WebVR test</title>
-    <meta name="description" content="Monte Alban Carving WebVR Test">
+    <meta name="description" content="Monte Alban Carving WebVR">
     <script src="https://aframe.io/releases/0.9.0/aframe.min.js"></script>
     <script src="//cdn.rawgit.com/donmccurdy/aframe-extras/v5.1.0/dist/aframe-extras.min.js"></script>
+    <script src="https://unpkg.com/aframe-simple-sun-sky@^1.2.2/simple-sun-sky.js"></script>
+
   </head>
   <body>
     <a-scene background="color: #ECECEC" loading-screen="dotsColor: green; backgroundColor: black">
-        <a-sky color="grey"></a-sky>
+<!--        <a-sky color="grey"></a-sky>-->
+        <a-simple-sun-sky sun-position="1 1 0" fog-color="#578ABD" light-color="#6CB5FE" dark-color="#6AA3DC"></a-simple-sun-sky>
+
       
         <a-assets timeout="20000">
-        <a-asset-item id="model" src="./assets/MAstonecarving.glb"></a-asset-item>
+        <a-asset-item id="model" src="./assets/MAstonecarving_cropped.glb"></a-asset-item>
+            <img id="grassimg" src="./assets/img/TexturesCom_Grass0035_1_seamless_S.jpg">
         </a-assets>
         <a-entity id="rig"
           movement-controls
@@ -21,10 +26,22 @@
             position="0 1.6 0"
             look-controls="pointerLockEnabled: true"></a-entity>
         </a-entity>
-        <a-entity id="3dmodel" gltf-model="#model" rotation="270 180 270" position="0 -2.3 -5"></a-entity>
-        <a-light type="ambient" color="#445451"></a-light>
-        <a-light type="directional" intensity="1.8" position="7.5 1.35 -5.3" target="#3dmodel"></a-light>
-        <a-light type="directional" intensity="1.8" position="-.25 3 6.39" target="#3dmodel"></a-light>
+        
+<!--        model -->
+        <a-entity id="3dmodel" gltf-model="#model" rotation="270 150 270" position="0 -4.8 -7" scale="1.7 1.7 1.7"></a-entity>
+        
+<!--        lighting -->
+        <a-entity id="middlewall" position="-0.345 2.632 -7.811"></a-entity>
+        <a-light type="ambient" color="#FFFFFF"></a-light>
+        <a-light type="spot" intensity="1.8" position="-3.713 0.05 -1.164" angle="45" decay="1.5" distance="8" intensity="1.8" target="#middlewall">
+         </a-light>
+        <a-light type="spot" intensity="1.8" position="5.419 0.05 -6.101" angle="45" decay="1.5" distance="8" intensity="1.8" target="#middlewall">
+         </a-light>
+        
+<!--        grass -->
+        <a-plane id="grass" material="color:#314106; src:#grassimg; repeat:25 25" rotation="-90 0 0" scale="100 100 1"
+        
+        
     </a-scene>
   </body>
 </html>

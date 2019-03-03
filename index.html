@@ -16,7 +16,8 @@
 
       
         <a-assets timeout="20000">
-        <a-asset-item id="model" src="./assets/MAstonecarving_cropped.glb"></a-asset-item>
+            <audio id="birds" src="./assets/sounds/birds.mp3" preload="auto"></audio>
+            <a-asset-item id="model" src="./assets/MAstonecarving_cropped.glb"></a-asset-item>
             <img id="grassimg" src="./assets/img/TexturesCom_Grass0035_1_seamless_S.jpg">
         </a-assets>
         <a-entity id="rig"
@@ -39,8 +40,11 @@
          </a-light>
         
 <!--        grass -->
-        <a-plane id="grass" material="color:#314106; src:#grassimg; repeat:25 25" rotation="-90 0 0" scale="100 100 1"
+        <a-plane id="grass" material="color:#314106; src:#grassimg; repeat:25 25" rotation="-90 0 0" scale="100 100 1"></a-plane>
         
+<!--                 sound -->
+<!--        <a-sound src="#birds" autoplay="true" position="0 2 8" loop="true"></a-sound>-->
+        <a-entity id="birdsounds" sound="src: #birds; autoplay: true; position: -.4 5 -7; loop: true"></a-entity>
         
     </a-scene>
   </body>

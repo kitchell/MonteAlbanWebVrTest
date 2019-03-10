@@ -6,26 +6,33 @@
     <meta name="description" content="Monte Alban Carving WebVR">
     <script src="https://aframe.io/releases/0.9.0/aframe.min.js"></script>
     <script src="//cdn.rawgit.com/donmccurdy/aframe-extras/v5.1.0/dist/aframe-extras.min.js"></script>
-    <script src="https://unpkg.com/aframe-simple-sun-sky@^1.2.2/simple-sun-sky.js"></script>
+<!--    <script src="https://unpkg.com/aframe-simple-sun-sky@^1.2.2/simple-sun-sky.js"></script>-->
 
   </head>
   <body>
     <a-scene background="color: #ECECEC" loading-screen="dotsColor: green; backgroundColor: black">
-<!--        <a-sky color="grey"></a-sky>-->
-        <a-simple-sun-sky sun-position="1 1 0" fog-color="#578ABD" light-color="#6CB5FE" dark-color="#6AA3DC"></a-simple-sun-sky>
+
+<!--        <a-simple-sun-sky sun-position="1 1 0" fog-color="#578ABD" light-color="#6CB5FE" dark-color="#6AA3DC"></a-simple-sun-sky>-->
 
       
-        <a-assets timeout="20000">
-            <audio id="birds" src="./assets/sounds/birds.mp3" preload="auto"></audio>
+        <a-assets timeout="40000">
             <a-asset-item id="model" src="./assets/MAstonecarving_cropped.glb"></a-asset-item>
             <img id="grassimg" src="./assets/img/TexturesCom_Grass0035_1_seamless_S.jpg">
+            <img id="skyimg" crossorigin="anonymous"  src="./assets/img/sky2.jpg">
+            <audio id="birds" src="./assets/sounds/birds.mp3" preload="auto"></audio>
+
         </a-assets>
+        
+        <a-sky id="sky" src="#skyimg"></a-sky>
+        
         <a-entity id="rig"
           movement-controls
-          position="0 0 0">
+          position="-3.37 0 -2.58"
+          rotation="0 -31 0">
             <a-entity camera
             position="0 1.6 0"
             look-controls="pointerLockEnabled: true"></a-entity>
+            <a-entity id="birdsounds" sound="src: #birds; autoplay: true; loop: true"></a-entity>
         </a-entity>
         
 <!--        model -->
@@ -44,7 +51,7 @@
         
 <!--                 sound -->
 <!--        <a-sound src="#birds" autoplay="true" position="0 2 8" loop="true"></a-sound>-->
-        <a-entity id="birdsounds" sound="src: #birds; autoplay: true; position: -.4 5 -7; loop: true"></a-entity>
+<!--        <a-entity id="birdsounds" sound="src: #birds; autoplay: true; position: -.4 5 -7; loop: true"></a-entity>-->
         
     </a-scene>
   </body>
